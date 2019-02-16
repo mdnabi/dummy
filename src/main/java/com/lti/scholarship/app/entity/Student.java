@@ -12,19 +12,16 @@ import javax.persistence.Table;
 public class Student {
 
 	@Id
-	@GeneratedValue
-	private int student_id;
-
+	private String adharNo;
 	private String stateOfDomicile;
 	private String district;
 	private String name;
+	
 	private String dob;
-
 	private String gender;
 	private String mobileNo;
 	private String email;
-	private String adharNo;
-
+	
 	private String bankIfscCode;
 	private String bankAccNo;
 	private String bankName;
@@ -36,14 +33,6 @@ public class Student {
 
 	public Student() {
 		super();
-	}
-
-	public int getStudent_id() {
-		return student_id;
-	}
-
-	public void setStudent_id(int student_id) {
-		this.student_id = student_id;
 	}
 
 	public String getStateOfDomicile() {

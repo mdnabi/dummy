@@ -45,10 +45,10 @@ public class InstituteController {
 	public List<Student> fetchStudentsByInstituteId(@RequestBody String instituteId) {
 		return instituteService.fetchStudentsByInstituteId(instituteId);
 	}
-	@RequestMapping(path = "/institute/fetchInstituteIdBystudentId", method = RequestMethod.POST)
+	/*@RequestMapping(path = "/institute/fetchInstituteIdBystudentId", method = RequestMethod.POST)
 	@CrossOrigin
 	public Institute fetchInstituteIdBystudentId(@RequestBody int id) {
 		return instituteService.fetchInstituteByStudentId(id);
-	}
+	}*/
 
 }

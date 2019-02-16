@@ -1,35 +1,61 @@
 package com.lti.scholarship.app.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TBL_STUDENTSTATUS")
+@Table(name = "TBL_STUDENTSTATUS")
 public class StudentStatus {
-@Id
-	private String adharNo;
-	private String instituteCode;
-	private String status;
+
+	@Id
+	@GeneratedValue
+	private int id;
 	
-	public String getAdharNo() {
-		return adharNo;
+	@ManyToOne
+	@JoinColumn(name = "adharNo")
+	private Student student;
+	
+	@ManyToOne
+	@JoinColumn(name = "institute_id")
+	private Institute institute;
+	
+	private String status;
+
+	public int getId() {
+		return id;
 	}
-	public void setAdharNo(String userid) {
-		this.adharNo = userid;
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getInstituteCode() {
-		return instituteCode;
+
+	public Student getStudent() {
+		return student;
 	}
-	public void setInstituteCode(String instituteCode) {
-		this.instituteCode = instituteCode;
+
+	public void setStudent(Student student) {
+		this.student = student;
 	}
+
+	public Institute getInstitute() {
+		return institute;
+	}
+
+	public void setInstitute(Institute institute) {
+		this.institute = institute;
+	}
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
 	
-	
+		
 }

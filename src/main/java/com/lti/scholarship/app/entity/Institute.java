@@ -12,6 +12,7 @@ import javax.persistence.Table;
 public class Institute {
 	@Id
 	private String instituteCode;
+	
 	private String institutionCategory;
 	private String instituteName;
 	private String stateOfInstitute;

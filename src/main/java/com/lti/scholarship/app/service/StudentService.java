@@ -20,12 +20,13 @@ public class StudentService implements StudentInterface {
 	@Transactional
 	public Student add(Student student) {
 
-		return genericRepository.stores(student);
+		return (Student) genericRepository.store(student);
 	}
 
 	@Transactional
-	public Student fetchById(int id) {
-		return (Student) genericRepository.fetchById(Student.class, id);
+	public Student fetchByAdharNo(String adrNo) {
+		System.out.println("student service");
+		return  genericRepository.fetchStudentByAdharNo(Student.class,adrNo);
 	}
 
 	@Transactional
@@ -34,5 +35,34 @@ public class StudentService implements StudentInterface {
 		return genericRepository.fetchAll(Student.class);
 	}
 	
+	@Transactional
+	public Boolean verify(String userName,String password) {
+	 
+		List<Student> students = fetchAll();
+		boolean flag = false;
+		for (Student student : students) {
+			if (userName.equals(student.getName()) & password.equals(student.getPassword())) {
+				flag = true;
+			}
+		}
+		if (flag == true) {
+			System.out.println("LoginSuccessFull...!");
+			System.out.println("Welcome...!" + userName);
+		}
+		if (flag == false) {
+			System.out.println("Sorry ..User Name or Password in correct");
+		}
 
+		return (Boolean)flag;
+	}
+
+	@Override
+	public Student fetchById(int id) {
+		
+		return null;
+	}
+			
+
+	
+	
 }
