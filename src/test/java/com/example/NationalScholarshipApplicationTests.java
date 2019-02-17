@@ -271,15 +271,14 @@ public class NationalScholarshipApplicationTests {
 
 	@Test
 	@Transactional
-	public void 
-() {
-
-		// valid institute and login success
-		instituteLonginService.verifyInstitute("nist college", "112266");
+	public void verifyInstitute() {
+		Boolean flag = instituteLonginService.verifyInstitute("ak1122", "112266");
+		System.out.println(flag);
 		// valid instituteCode and login success
 		// instituteLonginService.verifyInstitute("ak2233", "112266");
 	}
 
+	// To Apply for SchollerShip
 	@Test
 	@Transactional
 	public void addScholarship() {
@@ -326,18 +325,6 @@ public class NationalScholarshipApplicationTests {
 		 */
 		scholarshipService.add(scholarship);
 	}
-
-	/*
-	 * @Test
-	 * 
-	 * @Transactional public void addStudentStatus() { // Working StudentStatus
-	 * status=new StudentStatus(); Student student=new Student(); Institute
-	 * institute=new Institute(); student.setAdharNo("555406625373");
-	 * institute.setInstituteCode("ak1122"); status.setStudent(student);
-	 * status.setStatus("yes"); status.setInstitute(institute);
-	 * 
-	 * studentStatusService.add(status); }
-	 */
 
 	// method belongs to ministry
 	@Test // Working

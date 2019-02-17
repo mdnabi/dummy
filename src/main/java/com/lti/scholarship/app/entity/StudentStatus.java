@@ -14,15 +14,15 @@ public class StudentStatus {
 	@Id
 	@GeneratedValue
 	private int id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "adharNo")
 	private Student student;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "institute_id")
 	private Institute institute;
-	
+
 	private String status;
 
 	public int getId() {
@@ -56,6 +56,5 @@ public class StudentStatus {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-		
+
 }

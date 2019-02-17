@@ -12,10 +12,10 @@ import com.lti.scholarship.app.repository.GenericRepository;
 
 @Service
 public class StudentStatusService {
-	
+
 	@Autowired
 	private GenericRepository genericRepository;
-	
+
 	@Transactional
 	public void add(StudentStatus studentStatus) {
 		System.out.println("service called");
@@ -26,12 +26,12 @@ public class StudentStatusService {
 	public void studentStatus(String adNo, String instituteCode) {
 		Student s = genericRepository.fetchStudentByAdharNo(Student.class, adNo);
 		Institute i = genericRepository.fetchStateByInstituteCode(Institute.class, instituteCode);
-		
+
 		StudentStatus ss = new StudentStatus();
 		ss.setInstitute(i);
 		ss.setStudent(s);
 		ss.setStatus("yes");
-		
+
 		genericRepository.store(ss);
 	}
 }

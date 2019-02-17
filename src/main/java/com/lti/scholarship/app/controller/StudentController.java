@@ -30,10 +30,10 @@ public class StudentController {
 		return "record added successfully";
 	}
 
-	@RequestMapping(path = "/student/fetchById", method = RequestMethod.POST)
+	@RequestMapping(path = "/student/fetchByAdharNo", method = RequestMethod.POST)
 	@CrossOrigin
-	public Student fetchById(@RequestBody int id) {
-		return studentService.fetchById(id);
+	public Student fetchStudentByAdharNo(String adharno) {
+		return studentService.fetchByAdharNo(adharno);
 	}
 
 	@RequestMapping(path = "/student/fetchAll", method = RequestMethod.POST)

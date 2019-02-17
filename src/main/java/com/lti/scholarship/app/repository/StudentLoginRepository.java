@@ -33,7 +33,7 @@ public class StudentLoginRepository extends GenericRepository {
 		if (flag == false) {
 			System.out.println("Sorry ..User Name or Password in correct");
 		}
-		return (Boolean)flag;
+		return (Boolean) flag;
 
 		/*
 		 * List<Student> students=genericRepository.fetchAll(Student.class); boolean

@@ -26,7 +26,7 @@ public class StudentService implements StudentInterface {
 	@Transactional
 	public Student fetchByAdharNo(String adrNo) {
 		System.out.println("student service");
-		return  genericRepository.fetchStudentByAdharNo(Student.class,adrNo);
+		return genericRepository.fetchStudentByAdharNo(Student.class, adrNo);
 	}
 
 	@Transactional
@@ -34,10 +34,10 @@ public class StudentService implements StudentInterface {
 		// System.out.flush();
 		return genericRepository.fetchAll(Student.class);
 	}
-	
+
 	@Transactional
-	public Boolean verify(String userName,String password) {
-	 
+	public Boolean verify(String userName, String password) {
+
 		List<Student> students = fetchAll();
 		boolean flag = false;
 		for (Student student : students) {
@@ -53,16 +53,7 @@ public class StudentService implements StudentInterface {
 			System.out.println("Sorry ..User Name or Password in correct");
 		}
 
-		return (Boolean)flag;
+		return (Boolean) flag;
 	}
 
-	@Override
-	public Student fetchById(int id) {
-		
-		return null;
-	}
-			
-
-	
-	
 }

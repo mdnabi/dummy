@@ -11,9 +11,9 @@ public class StudentLoginController {
 	GenericRepository genericRepository;
 
 	
-	/*@Transactional
-	public Boolean fetchByAdharAndPassword(String adhar, String password) {
-		System.out.println("Adhar verifier @contorller");
-		return genericRepository.fetchByAdharAndPassword(adhar, password);
-	}*/
+	/*  @Transactional public Boolean fetchByAdharAndPassword(String adhar, String
+	 password) { System.out.println("Adhar verifier @contorller"); return
+	 genericRepository.fetchByAdharAndPassword(adhar, password); }
+	 */
+	
 }

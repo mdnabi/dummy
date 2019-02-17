@@ -15,16 +15,17 @@ import com.lti.scholarship.app.repository.GenericRepository;
 public class StudentLoginService {
 	@Autowired
 	private GenericRepository genericRepository;
-StudentService studentService;
+	StudentService studentService;
+
 	@Transactional
 	public Boolean verifyByUser(String adharNo, String password) {
-		Boolean flag=false;
-		Student student=genericRepository.fetchStudentByAdharNo(Student.class, adharNo);
-		
-if(adharNo.equals(student.getAdharNo())&&password.equals(student.getPassword())) {
-		flag=true;}
+		Boolean flag = false;
+		Student student = genericRepository.fetchStudentByAdharNo(Student.class, adharNo);
+
+		if (adharNo.equals(student.getAdharNo()) && password.equals(student.getPassword())) {
+			flag = true;
+		}
 		return flag;
 	}
-	
 
 }

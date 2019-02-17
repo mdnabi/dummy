@@ -14,7 +14,8 @@ public class StudentRepository extends GenericRepository {
 
 	// @PersistenceContext //To create object of EntityManager
 	private GenericRepository genericRepository;
-StudentService studentService;
+	StudentService studentService;
+
 	@Transactional
 	public void add(Student student) {
 		genericRepository.store(student);
@@ -22,19 +23,16 @@ StudentService studentService;
 
 	@Transactional
 	public Student fetchStudentByAdharNo(String adharno) {
-		Student student= genericRepository.fetchStudentByAdharNo(Student.class,adharno);
+		Student student = genericRepository.fetchStudentByAdharNo(Student.class, adharno);
 		return student;
 	}
 
 	@Transactional
 	public Boolean verify(String adharNo, String password) {
-		List<Student>students = studentService.fetchAll();
+		Student student = studentService.fetchByAdharNo(adharNo);
 		boolean flag = false;
-		for (Student student : students) {
-
-			if (adharNo.equals(student.getAdharNo()) & password.equals(student.getPassword())) {
-				flag = true;
-			}
+		if (adharNo.equals(student.getAdharNo()) & password.equals(student.getPassword())) {
+			flag = true;
 		}
 		return flag;
 	}

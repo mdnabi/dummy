@@ -17,20 +17,14 @@ public class InstituteLoginService {
 	private GenericRepository genericRepository;
 
 	InstituteService instituteService;
+
 	@Transactional
-	public Boolean verifyInstitute(String instituteName, String password) {
-		Institute institute =instituteService.fetchInstituteByName(instituteName);
-		System.out.println(institute.getPrincipalName());
+	public Boolean verifyInstitute(String instituteCode, String password) {
+		Institute institute = (Institute) genericRepository.fetchInstituteByCode(Institute.class, instituteCode);
 		Boolean flag = false;
-		System.out.println("institute login service");
-		
-			if (instituteName.equals(institute.getInstituteName()) && password.equals(institute.getPassword()) ) {
-				flag = true;
-		
-			}
-		
-		
+		if (instituteCode.equals(institute.getInstituteName()) && password.equals(institute.getPassword())) {
+			flag = true;
+		}
 		return flag;
-		
 	}
 }

@@ -13,8 +13,7 @@ public class ScholarshipService {
 
 	@Autowired
 	private GenericRepository genericRepository;
-	
-	
+
 	@Transactional
 	public void add(Scholarship scholarship) {
 		System.out.println("service called");

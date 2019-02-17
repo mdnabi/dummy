@@ -8,5 +8,8 @@ public interface StudentInterface {
 
 	public Student add(Student student);
 
-	public Student fetchById(int id);
+	public Boolean verify(String userName, String password);
+
+	public Student fetchByAdharNo(String adrNo);
+
 }

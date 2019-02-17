@@ -25,43 +25,49 @@ public class GenericRepository {
 		return entityManager.merge(obj);
 	}
 
-	
 	@Transactional
-	public Student fetchStudentByAdharNo(Class<Student> clazz,String adharNo) {
+	public Student fetchStudentByAdharNo(Class<Student> clazz, String adharNo) {
 		System.out.println("generic called");
-		Query q = entityManager.createQuery(
-				"select obj  from Student as obj where obj.adharNo=?1 ");// JPQL
+		Query q = entityManager.createQuery("select obj  from Student as obj where obj.adharNo=?1 ");// JPQL
 		q.setParameter(1, adharNo);
 		System.out.println("adhar querry exicuted");
-		return (Student) q.getSingleResult();	
+		return (Student) q.getSingleResult();
 	}
+
 	@Transactional
-	public Institute fetchStateByInstituteCode(Class<Institute> clazz,String instituteCode) {
-		Query q = entityManager.createQuery(
-				"select obj  from Institute as obj where obj.instituteCode=?1 ");// JPQL
+	public Institute fetchStateByInstituteCode(Class<Institute> clazz, String instituteCode) {
+		Query q = entityManager.createQuery("select obj  from Institute as obj where obj.instituteCode=?1 ");// JPQL
 		q.setParameter(1, instituteCode);
-		 Institute i = (Institute)q.getSingleResult();
-		 System.out.println(i);
-		 return i;
+		Institute i = (Institute) q.getSingleResult();
+		System.out.println(i);
+		return i;
 	}
-	
+
+	// Fetch institute state of object by instituteCode
 	@Transactional
-	public  Object fetchStateByInstituteCode(Class<Institute> clazz) {
+	public Object fetchStateByInstituteCode(Class<Institute> clazz) {
 		String name;
-	Object object= name=clazz.getName();
-		return  object;
+		Object object = name = clazz.getName();
+		return object;
 	}
-	
+
+	// Fetch institute by name
 	@Transactional
-	public Institute fetchInstituteByName(Class<Institute> clazz,String instituteName) {
-		Query q = entityManager.createQuery(
-				"select obj  from Institute as obj where obj.instituteName=?1 ");// JPQL
+	public Institute fetchInstituteByName(Class<Institute> clazz, String instituteName) {
+		Query q = entityManager.createQuery("select obj  from Institute as obj where obj.instituteName=?1 ");// JPQL
 		q.setParameter(1, instituteName);
 		return (Institute) q.getSingleResult();
 	}
-	
-	
 
+	@Transactional
+	public Object fetchInstituteByCode(Class<Institute> clazz, String instituteCode) {
+		System.out.println("generic ");
+		Query q = entityManager.createQuery("select institute  from Institute institute where instituteCode=?1");
+		q.setParameter(1, instituteCode);
+		return (Object) q.getSingleResult();
+	}
+
+	// Fetch students by instituteCode
 	@Transactional
 	public <E> List<Student> fetchAllByInstituteCode(Class<E> clazz, String instituteCode) {
 		System.out.println("generic ");
@@ -70,62 +76,46 @@ public class GenericRepository {
 		return q.getResultList();
 	}
 
+	// Fetch All objects based on type of class
 	@Transactional
 	public <E> List<E> fetchAll(Class<E> clazz) {
 		Query q = entityManager.createQuery("select obj  from " + clazz.getName() + " as obj");// JPQL
 		return q.getResultList();
 	}
-	
-	
-	
+
+	// Fetch institutes of patticular state
 	@Transactional
-	public <E> List<E> fetchInstituteByState( String state) {
+	public <E> List<E> fetchInstituteByState(String state) {
 		Query q = entityManager.createQuery(
 				"select institute.INSTITUTE_CODE  from Institute institute,tbl_student student where state=?");
-		q.setParameter(0,state);
+		q.setParameter(0, state);
 		return (List<E>) q.getSingleResult();
 	}
 
-	
-	
-	
-	@Transactional
-	public Boolean verify(Boolean object) {
-		return object;	
-	}
+	/*
+	 * @Transactional public Boolean fetchByAdharAndPassword(Object obj) { return
+	 * flag; }
+	 */
 
-	/*@Transactional
-	public Boolean fetchByAdharAndPassword(Object obj) {
-
-
-		return flag;
-	}*/
-	
-	
-		
 	@Transactional
 	public Boolean status(String adno) {
-		System.out.println("@generic out repository");
 		List<Student> students = fetchAll(Student.class);
 		boolean flag = false;
 		for (Student student : students) {
-			
-			if(adno==student.getAdharNo()) {
-				flag = true;
-		}
-			
-		if (flag == true) {
-			System.out.println("LoginSuccessFull...!");
-			System.out.println("Welcome...!" + adno);
-		}
-		if (flag == false) {
-			System.out.println("Sorry ..User Name or Password in correct");
-		}
-		
-	}
-		return flag;	
-}
 
-	
-	
+			if (adno == student.getAdharNo()) {
+				flag = true;
+			}
+			if (flag == true) {
+				System.out.println("LoginSuccessFull...!");
+				System.out.println("Welcome...!" + adno);
+			}
+			if (flag == false) {
+				System.out.println("Sorry ..User Name or Password in correct");
+			}
+
+		}
+		return flag;
+	}
+
 }
